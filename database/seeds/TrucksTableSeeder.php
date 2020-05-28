@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Truck;
+use App\Models\Truck;
 
 class TrucksTableSeeder extends Seeder
 {
