@@ -17,8 +17,8 @@ class CreateTrucksTable extends Migration
             $table->id();
             $table->integer('brand');
             $table->integer('year_made');
-            $table->string('user');
-            $table->integer('users_count');
+            $table->string('owner', 30);
+            $table->integer('owners_count');
             $table->text('comment');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ class Truck extends Model
     protected $table = 'trucks';
 
     protected $fillable = [
-        'brand', 'year_made', 'user', 'users_count', 'comment'
+        'brand', 'year_made', 'owner', 'owners_count', 'comment'
     ];
 
 }
