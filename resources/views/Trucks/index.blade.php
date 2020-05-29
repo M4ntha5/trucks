@@ -3,7 +3,7 @@
 @section('content')
      <div class="container pt-3">
           <h1 class="pt-3 mb-3" style="text-align:center;">Trucks list</h1>
-          <a class="btn btn-secondary mb-3" href="/trucks/create">Add new</a>
+          <a class="btn btn-primary mb-3" href="/trucks/create">Add new</a>
           <div class="row mb-5">          
                <div class="col-sm-6">
                     <div class="dropdown">

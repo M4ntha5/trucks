@@ -21,7 +21,7 @@ class TruckController extends Controller
     public function index()
     {
         if(request('q') != null)
-            $trucks = $this->model->getAllTrucksBySearch(request('q'));
+            $trucks = $this->model->getTrucksBySearch(request('q'));
         else
             $trucks = $this->model->getAllTrucks(request('filter'), request('sort'));
 
@@ -49,6 +49,6 @@ class TruckController extends Controller
 
         $this->model->createTruck($input);
 
-        return redirect('/trucks');
+        return redirect('/');
     }
 }

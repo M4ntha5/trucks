@@ -27,14 +27,14 @@ class TruckRepository implements ITruckRepository
             ->select('trucks.*', 'brands.name')->orderBy($filter, $sort)->get();
     }
 
-    public function getAllTrucksBySearch($q)
+    public function getTrucksBySearch($q)
     {
         return $this->model->join('brands', 'brands.id', '=', 'trucks.brand')
             ->select('trucks.*', 'brands.name')
-            ->where('name', 'like', "%{$q}")
-            ->orWhere('year_made', 'like', "%{$q}")
-            ->orWhere('owner', 'like', "%{$q}")
-            ->orWhere('owners_count', 'like', "%{$q}")      
+            ->where('name', 'like', "%{$q}%")
+            ->orWhere('year_made', 'like', "%{$q}%")
+            ->orWhere('owner', 'like', "%{$q}%")
+            ->orWhere('owners_count', 'like', "%{$q}%")      
             ->get();
     }
 
