@@ -6,7 +6,7 @@
 - Run `composer install`
 - Run `php artisan key:generate`
 - Set up your `.env` file with the correct data
-- Run the table migrations `php artisan migrate --seed`
+- Run the table migrations and seed database `php artisan migrate --seed`
 
 
 Now you should have the same project
