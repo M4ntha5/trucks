@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'TruckController@index');
+Route::get('/', 'TruckController@index')->name('trucks.index');
 Route::get('/trucks/create', [
      'uses' => 'TruckController@create',
      'as' => 'truck.create'

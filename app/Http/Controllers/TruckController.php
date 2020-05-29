@@ -20,8 +20,12 @@ class TruckController extends Controller
 
     public function index()
     {
-        $trucks = $this->model->getAllTrucks();
-        return view('trucks.index')->with('trucks', $trucks);
+        if(request('q') != null)
+            $trucks = $this->model->getAllTrucksBySearch(request('q'));
+        else
+            $trucks = $this->model->getAllTrucks(request('filter'), request('sort'));
+
+        return view('trucks.index', compact('trucks', $trucks));
     }
 
     public function create(FormBuilder $formBuilder)
@@ -45,6 +49,6 @@ class TruckController extends Controller
 
         $this->model->createTruck($input);
 
-        return redirect('/');
+        return redirect('/trucks');
     }
 }

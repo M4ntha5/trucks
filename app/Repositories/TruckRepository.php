@@ -16,14 +16,32 @@ class TruckRepository implements ITruckRepository
         $this->model = $model;
     }
 
-    public function getAllTrucks()
+    public function getAllTrucks($filter, $sort)
     {
-        return $this->model->paginate(10);
+        $filter = $filter == null ? 'id' : $filter;
+        if($filter == 'brand') 
+            $filter = 'name';
+
+        $sort = $sort == null ? 'asc' : $sort;
+        return $this->model->join('brands', 'brands.id', '=', 'trucks.brand')
+            ->select('trucks.*', 'brands.name')->orderBy($filter, $sort)->get();
+    }
+
+    public function getAllTrucksBySearch($q)
+    {
+        return $this->model->join('brands', 'brands.id', '=', 'trucks.brand')
+            ->select('trucks.*', 'brands.name')
+            ->where('name', 'like', "%{$q}")
+            ->orWhere('year_made', 'like', "%{$q}")
+            ->orWhere('owner', 'like', "%{$q}")
+            ->orWhere('owners_count', 'like', "%{$q}")      
+            ->get();
     }
 
     public function createTruck(array $data)
     {
         return $this->model->create($data);
     }
+
 }
 
